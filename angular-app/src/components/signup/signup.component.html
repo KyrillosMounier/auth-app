@@ -1,0 +1,45 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px;">
+    <h3 class="card-title text-center mb-4">signup</h3>
+
+    <form (ngSubmit)="onSubmit()" #signupForm="ngForm" class="signup-form">
+        <!-- fullName Input -->
+        <div class="form-group mb-3">
+          <mat-form-field  class="w-100">
+            <span>Full Name</span>
+            <input matInput [(ngModel)]="signupData.fullName" name="fullName"  type="text" class="form-control" required />
+            <mat-error *ngIf="signupForm.controls['fullName']?.invalid">Full Name is Required</mat-error>
+          </mat-form-field>
+        </div>
+      <!-- Email Input -->
+      <div class="form-group mb-3">
+        <mat-form-field  class="w-100">
+          <span>Email</span>
+          <input matInput [(ngModel)]="signupData.email" name="email"  type="email" class="form-control" required />
+          <mat-error *ngIf="signupForm.controls['email']?.invalid">Please enter a valid email</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Password Input -->
+      <div class="form-group mb-3">
+        <mat-form-field  class="w-100">
+          <span>Password</span>
+          <input matInput [(ngModel)]="signupData.password" name="password"  type="password" class="form-control" required />
+          <mat-error *ngIf="signupForm.controls['password']?.invalid">Password is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Submit Button -->
+      <button mat-raised-button mat-button color="primary" type="submit" class="btn btn-primary w-100" [disabled]="signupForm.invalid">
+        signup
+      </button>
+
+     
+      <div class="alert alert-danger" *ngIf="errorMessage.length > 0">{{errorMessage}}</div>
+    </form>
+    <button mat-raised-button color="primary" type="button" class="btn btn-primary w-100 mt-4" (click)="loginRedirect()" >
+      Already have an account , Login Now
+     </button>
+  </div>
+  
+</div>

@@ -1,0 +1,103 @@
+{
+  "name": "angular-app",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "angular-app/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/angular-app",
+        "index": "angular-app/src/index.html",
+        "main": "angular-app/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "angular-app/tsconfig.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "angular-app/public"
+          }
+        ],
+        "styles": [
+            "angular-app/src/styles.css"
+          ],
+        "scripts": [],
+        "fileReplacements": [
+          {
+            "replace": "angular-app/src/environments/environment.ts",
+            "with": "angular-app/src/environments/environment.prod.ts"
+          }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+                {
+                  "replace": "angular-app/src/environments/environment.ts",
+                  "with": "angular-app/src/environments/environment.prod.ts"
+                }
+              ],
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true,
+          "fileReplacements": [
+            {
+              "replace": "angular-app/src/environments/environment.ts",
+              "with": "angular-app/src/environments/environment.ts"
+            }
+          ]
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "angular-app:build:production"
+        },
+        "development": {
+          "buildTarget": "angular-app:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "angular-app:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "angular-app:build",
+        "spa": true
+      }
+    }
+  }
+}

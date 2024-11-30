@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@angular-app/*": ["angular-app/src/*"],
+      "@nest-app/*": ["nest-app/src/*"]
+    }
+  },
+  "include": [
+    "angular-app/src/**/*.ts",
+    "nest-app/src/**/*.ts"
+  ]
+}

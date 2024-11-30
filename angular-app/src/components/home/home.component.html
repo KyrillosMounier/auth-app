@@ -1,0 +1,15 @@
+<div>
+    <h1>Welcome to the Home Page</h1>
+    <button (click)="logout()">Logout</button>
+
+    <div class="card mt-4" *ngIf="userList.length > 0">
+        <h3>User data</h3>
+        <ul >
+        <li *ngFor="let item of userList;let i = index">
+            {{item.fullName}} - {{item.email}}
+        </li>
+    </ul>
+
+    </div>
+  </div>
+  

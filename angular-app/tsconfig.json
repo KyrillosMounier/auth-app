@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "types": [],
+    "module": "esnext",
+    "target": "es2017",
+    "lib": ["es2017", "dom"]
+    ,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@angular/*": ["../node_modules/@angular/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
